@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть»
 
 * Студент: [Sergey Legenchuk](https://up.htmlacademy.ru/react/10/user/1551555).
-* Наставник: `Неизвестно`.
+* Наставник: [Максим Кузнецов](https://htmlacademy.ru/profile/knenkne).
 
 ---
 
