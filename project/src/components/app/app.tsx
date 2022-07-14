@@ -1,13 +1,8 @@
 import MainScreen from '../../pages/main-screen/main-screen';
+import { Film } from '../../types/types';
 
-type AppMoviesProps = {
-  name: string;
-  genre: string;
-  release: number;
-};
-
-function App({ name, genre, release }: AppMoviesProps): JSX.Element {
-  return <MainScreen filmName={name} filmGenre={genre} filmRelease={release} />;
+function App({ promoFilm }: { promoFilm: Film }): JSX.Element {
+  return <MainScreen film={promoFilm} />;
 }
 
 export default App;
