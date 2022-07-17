@@ -1,3 +1,5 @@
+import Header from '../../components/header/header';
+
 function MoviePageReviews(): JSX.Element {
   return (
     <div>
@@ -12,31 +14,7 @@ function MoviePageReviews(): JSX.Element {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header film-card__head">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <ul className="user-block">
-              <li className="user-block__item">
-                <div className="user-block__avatar">
-                  <img
-                    src="img/avatar.jpg"
-                    alt="User avatar"
-                    width="63"
-                    height="63"
-                  />
-                </div>
-              </li>
-              <li className="user-block__item">
-                <a className="user-block__link">Sign out</a>
-              </li>
-            </ul>
-          </header>
+          <Header />
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
@@ -113,8 +91,8 @@ function MoviePageReviews(): JSX.Element {
                       <p className="review__text">
                         Discerning travellers and Wes Anderson fans will
                         luxuriate in the glorious Mittel-European kitsch of one
-                        of the director&aposs funniest and most exquisitely designed
-                        films in years.
+                        of the director&aposs funniest and most exquisitely
+                        designed films in years.
                       </p>
 
                       <footer className="review__details">
@@ -132,10 +110,10 @@ function MoviePageReviews(): JSX.Element {
                     <blockquote className="review__quote">
                       <p className="review__text">
                         Anderson&aposs films are too precious for some, but for
-                        those of us willing to lose ourselves in them, they&aposre a
-                        delight. &quotThe Grand Budapest Hotel&quot is no different,
-                        except that he has added a hint of gravitas to the mix,
-                        improving the recipe.
+                        those of us willing to lose ourselves in them,
+                        they&aposre a delight. &quotThe Grand Budapest
+                        Hotel&quot is no different, except that he has added a
+                        hint of gravitas to the mix, improving the recipe.
                       </p>
 
                       <footer className="review__details">
@@ -152,9 +130,9 @@ function MoviePageReviews(): JSX.Element {
                   <div className="review">
                     <blockquote className="review__quote">
                       <p className="review__text">
-                        I didn&apost find it amusing, and while I can appreciate the
-                        creativity, it&aposs an hour and 40 minutes I wish I could
-                        take back.
+                        I didn&apost find it amusing, and while I can appreciate
+                        the creativity, it&aposs an hour and 40 minutes I wish I
+                        could take back.
                       </p>
 
                       <footer className="review__details">
