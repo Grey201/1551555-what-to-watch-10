@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+
 function Card() {
   return (
     <article className="small-film-card catalog__films-card">
@@ -10,9 +13,9 @@ function Card() {
         />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">
+        <Link className="small-film-card__link" to={AppRoute.Player}>
           Fantastic Beasts: The Crimes of Grindelwald
-        </a>
+        </Link>
       </h3>
     </article>
   );
