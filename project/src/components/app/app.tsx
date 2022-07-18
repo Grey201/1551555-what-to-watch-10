@@ -25,8 +25,8 @@ function App({ promoFilm }: { promoFilm: Film }): JSX.Element {
         />
         <Route path={AppRoute.Player} element={<Player />} />
         <Route path={AppRoute.Film} element={<MoviePage />} />
-        <Route path={AppRoute['Add Review']} element={<MoviePageReviews />} />
-        <Route path={AppRoute['Sign In']} element={<SingIn />} />
+        <Route path={AppRoute.AddReview} element={<MoviePageReviews />} />
+        <Route path={AppRoute.SignIn} element={<SingIn />} />
         <Route path={AppRoute.Error} element={<Error404 />} />
       </Routes>
     </BrowserRouter>
