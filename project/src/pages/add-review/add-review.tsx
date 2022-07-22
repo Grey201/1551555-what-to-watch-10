@@ -1,14 +1,17 @@
 import Header from '../../components/header/header';
+import { Films } from '../../types/types';
 
-function AddReview(): JSX.Element {
+function AddReview({ films }: { films: Films[] }): JSX.Element {
+  const [film] = films;
+  const { name, posterImage, previewImage } = film;
   return (
     <div>
       <section className="film-card film-card--full">
         <div className="film-card__header">
           <div className="film-card__bg">
             <img
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              alt="The Grand Budapest Hotel"
+              src={previewImage}
+              alt={name}
             />
           </div>
 
@@ -18,8 +21,8 @@ function AddReview(): JSX.Element {
 
           <div className="film-card__poster film-card__poster--small">
             <img
-              src="img/the-grand-budapest-hotel-poster.jpg"
-              alt="The Grand Budapest Hotel poster"
+              src={posterImage}
+              alt={name}
               width="218"
               height="327"
             />

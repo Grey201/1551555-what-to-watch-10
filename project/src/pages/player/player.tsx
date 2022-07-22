@@ -1,10 +1,14 @@
-function Player(): JSX.Element {
+import { Films } from "../../types/types";
+
+function Player({films}:{ films: Films[]}): JSX.Element {
+  const [film]=films;
+  const {posterImage, videoLink}= film;
   return (
     <div className="player">
       <video
-        src="#"
+        src={videoLink}
         className="player__video"
-        poster="img/player-poster.jpg"
+        poster={posterImage}
       />
 
       <button type="button" className="player__exit">

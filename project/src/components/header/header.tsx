@@ -24,7 +24,7 @@ export default function Header() {
           </div>
         </li>
         <li className="user-block__item">
-          <Link className="user-block__link" to={AppRoute['Sign In']}>Sign out</Link>
+          <Link className="user-block__link" to={AppRoute.SignIn}>Sign out</Link>
         </li>
       </ul>
     </header>
