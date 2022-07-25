@@ -1,13 +1,15 @@
 import Card from '../../components/card/card';
-import { Films } from '../../types/types';
+import { Films} from '../../types/types';
 import Header from '../../components/header/header';
+import { useState } from 'react';
 
-function MainScreen({ films }: { films: Films[] }): JSX.Element {
+
+function MainScreen({films}: { films: Films[]}): JSX.Element {
+
   const [film] = films;
   const { name, genre, released } = film;
+  const FilmList = films.map((film) => <Card key={film.id} {...film} onMouseOver={() => console.log(film.id)}/>);
   
-  const FilmList =
-    films.map((film) => <Card key={film.id} {...film} />);
   return (
     <div>
       <section className="film-card">

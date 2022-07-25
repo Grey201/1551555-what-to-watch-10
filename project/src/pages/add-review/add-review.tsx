@@ -155,7 +155,7 @@ function AddReview({ films }: { films: Films[] }): JSX.Element {
               />
               <div className="add-review__submit">
                 <button className="add-review__btn" type="submit">
-                  Post
+                  Posnpmt
                 </button>
               </div>
             </div>

@@ -17,3 +17,8 @@ genre: string;
 released: number;
 isFavorite: boolean;
 };
+
+export type MouseOverProps = {
+    name: string;
+    onMouseOver: () => void;
+    }

@@ -1,8 +1,9 @@
-import { Films } from '../../types/types';
+import { Films} from '../../types/types';
 import Card from '../../components/card/card';
+// export {};
 
-function MyList({ films }: { films: Films[] }): JSX.Element {
-  const FilmList = films.map((film) => <Card key={film.id} {...film} />);
+function MyList({ films}: { films: Films[]}): JSX.Element {
+//   const FilmList = films.map((film) => <Card key={film.id} {...film} />);
   return (
     <div>
       <div className="user-page">
@@ -38,7 +39,7 @@ function MyList({ films }: { films: Films[] }): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <div className="catalog__films-list">{FilmList}</div>
+          {/* <div className="catalog__films-list">{FilmList}</div> */}
         </section>
 
         <footer className="page-footer">

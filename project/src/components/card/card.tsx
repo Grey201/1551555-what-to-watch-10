@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { Films } from '../../types/types';
+import { Films, MouseOverProps} from '../../types/types';
 
-function Card({...films}:Films) {
-  const {name, posterImage, id}=films;
+
+function Card(onMouseOver:{onMouseOver:MouseOverProps}, ...film:Films[]){
+  
+  // const {...film}=film;
+const [id, posterImage, name]= film;
+  // console.log(id);
+  
   return (
-    <article key={id} className="small-film-card catalog__films-card">
+    <article key={id} className="small-film-card catalog__films-card" onMouseOver={onMouseOver}> 
+       {/* onMouseOver={onMouseOver}> */}
       <div className="small-film-card__image">
         <img
           src={posterImage}
