@@ -18,7 +18,4 @@ released: number;
 isFavorite: boolean;
 };
 
-export type MouseOverProps = {
-    name: string;
-    onMouseOver: () => void;
-    }
+export type CardProps = Films & { onMouseEnter: () => void; onMouseLeave: ()=>void}

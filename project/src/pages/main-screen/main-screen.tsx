@@ -1,15 +1,29 @@
 import Card from '../../components/card/card';
-import { Films} from '../../types/types';
+import { Films } from '../../types/types';
 import Header from '../../components/header/header';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
-
-function MainScreen({films}: { films: Films[]}): JSX.Element {
-
+function MainScreen({ films }: { films: Films[] }): JSX.Element {
   const [film] = films;
   const { name, genre, released } = film;
-  const FilmList = films.map((film) => <Card key={film.id} {...film} onMouseOver={() => console.log(film.id)}/>);
-  
+  const [activeCardId, setActiveCardId] = useState<null | number>(null);
+  const navigate = useNavigate();
+
+  const FilmList = films.map((filmData) => (
+    <Card
+      key={filmData.id}
+      {...filmData}
+      onMouseEnter={() => {
+        setActiveCardId(filmData.id);
+      }}
+      onMouseLeave={() => {
+        setActiveCardId(null);
+      }}
+    />
+  ));
+
   return (
     <div>
       <section className="film-card">
@@ -43,6 +57,7 @@ function MainScreen({films}: { films: Films[]}): JSX.Element {
                 <button
                   className="btn btn--play film-card__button"
                   type="button"
+                  onClick={() => navigate(AppRoute.Player)}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -52,6 +67,7 @@ function MainScreen({films}: { films: Films[]}): JSX.Element {
                 <button
                   className="btn btn--list film-card__button"
                   type="button"
+                  onClick={() => navigate(AppRoute.MyList)}
                 >
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>

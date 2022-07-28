@@ -1,6 +1,9 @@
 import Header from '../../components/header/header';
+import { useNavigate, Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
 function MoviePage(): JSX.Element {
+  const navigate = useNavigate();
   return (
     <div>
       <section className="film-card film-card--full">
@@ -28,6 +31,7 @@ function MoviePage(): JSX.Element {
                 <button
                   className="btn btn--play film-card__button"
                   type="button"
+                  onClick={() => navigate(AppRoute.Player)}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -37,6 +41,7 @@ function MoviePage(): JSX.Element {
                 <button
                   className="btn btn--list film-card__button"
                   type="button"
+                  onClick={() => navigate(AppRoute.MyList)}
                 >
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
@@ -44,9 +49,9 @@ function MoviePage(): JSX.Element {
                   <span>My list</span>
                   <span className="film-card__count">9</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">
+                <Link className="btn film-card__button" to={AppRoute.AddReview}>
                   Add review
-                </a>
+                </Link>
               </div>
             </div>
           </div>

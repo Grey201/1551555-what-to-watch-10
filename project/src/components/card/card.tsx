@@ -1,32 +1,27 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { Films, MouseOverProps} from '../../types/types';
+import { CardProps } from '../../types/types';
 
+function Card(props: CardProps) {
+  const { id, posterImage, name, onMouseEnter, onMouseLeave } = props;
 
-function Card(onMouseOver:{onMouseOver:MouseOverProps}, ...film:Films[]){
-  
-  // const {...film}=film;
-const [id, posterImage, name]= film;
-  // console.log(id);
-  
   return (
-    <article key={id} className="small-film-card catalog__films-card" onMouseOver={onMouseOver}> 
-       {/* onMouseOver={onMouseOver}> */}
+    <article
+      key={id}
+      className="small-film-card catalog__films-card"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="small-film-card__image">
-        <img
-          src={posterImage}
-          alt={name}
-          width="280"
-          height="175"
-        />
+        <img src={posterImage} alt={name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={AppRoute.Player}>
+        <Link className="small-film-card__link" to={AppRoute.Film}>
           {name}
         </Link>
       </h3>
     </article>
   );
 }
-export default Card;
 
+export default Card;

@@ -1,18 +1,23 @@
 import Header from '../../components/header/header';
 import { Films } from '../../types/types';
+import { useState } from 'react';
 
 function AddReview({ films }: { films: Films[] }): JSX.Element {
   const [film] = films;
   const { name, posterImage, previewImage } = film;
+  const [formData, setFormData] = useState({ text: '' });
+  const fieldChangeHandle: React.ChangeEventHandler<HTMLTextAreaElement> = (
+    evt
+  ): void => {
+    setFormData({ text: evt.currentTarget.value });
+  };
+
   return (
     <div>
       <section className="film-card film-card--full">
         <div className="film-card__header">
           <div className="film-card__bg">
-            <img
-              src={previewImage}
-              alt={name}
-            />
+            <img src={previewImage} alt={name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -20,12 +25,7 @@ function AddReview({ films }: { films: Films[] }): JSX.Element {
           <Header />
 
           <div className="film-card__poster film-card__poster--small">
-            <img
-              src={posterImage}
-              alt={name}
-              width="218"
-              height="327"
-            />
+            <img src={posterImage} alt={name} width="218" height="327" />
           </div>
         </div>
 
@@ -152,6 +152,8 @@ function AddReview({ films }: { films: Films[] }): JSX.Element {
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
+                onChange={fieldChangeHandle}
+                value={formData.text}
               />
               <div className="add-review__submit">
                 <button className="add-review__btn" type="submit">

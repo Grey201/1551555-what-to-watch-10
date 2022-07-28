@@ -1,9 +1,23 @@
 import { Films} from '../../types/types';
 import Card from '../../components/card/card';
-// export {};
+import { useState } from 'react';
+
 
 function MyList({ films}: { films: Films[]}): JSX.Element {
-//   const FilmList = films.map((film) => <Card key={film.id} {...film} />);
+  const [activeCardId, setActiveCardId] = useState<null | number>(null);
+  const FilmList = films.map((filmData) => (
+    <Card
+      key={filmData.id}
+      {...filmData}
+      onMouseEnter={() => {
+        setActiveCardId(filmData.id);
+      }}
+      onMouseLeave={() => {
+        setActiveCardId(null);
+      }}
+    />
+  ));
+
   return (
     <div>
       <div className="user-page">
@@ -39,7 +53,7 @@ function MyList({ films}: { films: Films[]}): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          {/* <div className="catalog__films-list">{FilmList}</div> */}
+          <div className="catalog__films-list">{FilmList}</div>
         </section>
 
         <footer className="page-footer">
