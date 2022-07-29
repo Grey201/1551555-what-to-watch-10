@@ -3,13 +3,13 @@ import { Films } from '../../types/types';
 import { useState } from 'react';
 
 function AddReview({ films }: { films: Films[] }): JSX.Element {
+  const [formData, setFormData] = useState('');
   const [film] = films;
   const { name, posterImage, previewImage } = film;
-  const [formData, setFormData] = useState({ text: '' });
-  const fieldChangeHandle: React.ChangeEventHandler<HTMLTextAreaElement> = (
+  const handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
     evt
   ): void => {
-    setFormData({ text: evt.currentTarget.value });
+    setFormData(evt.target.value);
   };
 
   return (
@@ -152,8 +152,8 @@ function AddReview({ films }: { films: Films[] }): JSX.Element {
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
-                onChange={fieldChangeHandle}
-                value={formData.text}
+                onChange={handleInputChange}
+                value={formData}
               />
               <div className="add-review__submit">
                 <button className="add-review__btn" type="submit">

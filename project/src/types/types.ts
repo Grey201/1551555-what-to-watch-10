@@ -18,4 +18,4 @@ released: number;
 isFavorite: boolean;
 };
 
-export type CardProps = Films & { onMouseEnter: () => void; onMouseLeave: ()=>void}
+

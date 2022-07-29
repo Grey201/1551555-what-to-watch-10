@@ -10,25 +10,25 @@ import AddReview from '../../pages/add-review/add-review';
 import SingIn from '../../pages/sign-in/sign-in';
 import PrivateRoute from '../privat-route/privat-route';
 
-function App({ promoFilm }: { promoFilm: Films[] }): JSX.Element {
+function App({ promoFilms }: { promoFilms: Films[] }): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen films={promoFilm} />}
+          element={<MainScreen films={promoFilms} />}
         />
         <Route
           path={AppRoute.MyList}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <MyList films={promoFilm} />
+              <MyList films={promoFilms} />
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Player} element={<Player films={promoFilm} />} />
+        <Route path={AppRoute.Player} element={<Player films={promoFilms} />} />
         <Route path={AppRoute.Film} element={<MoviePage />} />
-        <Route path={AppRoute.AddReview} element={<AddReview films={promoFilm}/>} />
+        <Route path={AppRoute.AddReview} element={<AddReview films={promoFilms}/>} />
         <Route path={AppRoute.SignIn} element={<SingIn />} />
         <Route path={AppRoute.Error} element={<Error404 />} />
       </Routes>

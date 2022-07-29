@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
 function MainScreen({ films }: { films: Films[] }): JSX.Element {
+  const [activeCardId, setActiveCardId] = useState<null | number>(null);
   const [film] = films;
   const { name, genre, released } = film;
-  const [activeCardId, setActiveCardId] = useState<null | number>(null);
   const navigate = useNavigate();
 
   const FilmList = films.map((filmData) => (

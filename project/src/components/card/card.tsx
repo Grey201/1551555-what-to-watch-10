@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
-import { CardProps } from '../../types/types';
+import { Films } from '../../types/types';
+
+export type CardProps = Films & {
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+};
 
 function Card(props: CardProps) {
   const { id, posterImage, name, onMouseEnter, onMouseLeave } = props;
@@ -16,7 +20,11 @@ function Card(props: CardProps) {
         <img src={posterImage} alt={name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={AppRoute.Film}>
+        <Link
+          className="small-film-card__link"
+          to={`/films/:${id}`}
+          title={name}
+        >
           {name}
         </Link>
       </h3>
