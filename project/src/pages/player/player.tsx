@@ -1,24 +1,18 @@
-function Player(): JSX.Element {
+import { Films } from '../../types/types';
+
+function Player({ films }: { films: Films[] }): JSX.Element {
+  const [film] = films;
+  const { posterImage, videoLink } = film;
   return (
     <div className="player">
-      <video
-        src="#"
-        className="player__video"
-        poster="img/player-poster.jpg"
-      />
-
+      <video src={videoLink} className="player__video" poster={posterImage} />
       <button type="button" className="player__exit">
         Exit
       </button>
-
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress
-              className="player__progress"
-              value="30"
-              max="100"
-            />
+            <progress className="player__progress" value="30" max="100" />
             <div className="player__toggler" style={{ left: '30%' }}>
               Toggler
             </div>

@@ -1,15 +1,23 @@
 import Header from '../../components/header/header';
+import { Films } from '../../types/types';
+import { useState } from 'react';
 
-function AddReview(): JSX.Element {
+function AddReview({ films }: { films: Films[] }): JSX.Element {
+  const [formData, setFormData] = useState('');
+  const [film] = films;
+  const { name, posterImage, previewImage } = film;
+  const handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
+    evt
+  ): void => {
+    setFormData(evt.target.value);
+  };
+
   return (
     <div>
       <section className="film-card film-card--full">
         <div className="film-card__header">
           <div className="film-card__bg">
-            <img
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              alt="The Grand Budapest Hotel"
-            />
+            <img src={previewImage} alt={name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -17,12 +25,7 @@ function AddReview(): JSX.Element {
           <Header />
 
           <div className="film-card__poster film-card__poster--small">
-            <img
-              src="img/the-grand-budapest-hotel-poster.jpg"
-              alt="The Grand Budapest Hotel poster"
-              width="218"
-              height="327"
-            />
+            <img src={posterImage} alt={name} width="218" height="327" />
           </div>
         </div>
 
@@ -149,10 +152,12 @@ function AddReview(): JSX.Element {
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
+                onChange={handleInputChange}
+                value={formData}
               />
               <div className="add-review__submit">
                 <button className="add-review__btn" type="submit">
-                  Post
+                  Posnpmt
                 </button>
               </div>
             </div>

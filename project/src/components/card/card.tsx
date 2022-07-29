@@ -1,23 +1,35 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { Films } from '../../types/types';
 
-function Card() {
+export type CardProps = Films & {
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+};
+
+function Card(props: CardProps) {
+  const { id, posterImage, name, onMouseEnter, onMouseLeave } = props;
+
   return (
-    <article className="small-film-card catalog__films-card">
+    <article
+      key={id}
+      className="small-film-card catalog__films-card"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="small-film-card__image">
-        <img
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-          alt="Fantastic Beasts: The Crimes of Grindelwald"
-          width="280"
-          height="175"
-        />
+        <img src={posterImage} alt={name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={AppRoute.Player}>
-          Fantastic Beasts: The Crimes of Grindelwald
+        <Link
+          className="small-film-card__link"
+          to={`/films/:${id}`}
+          title={name}
+        >
+          {name}
         </Link>
       </h3>
     </article>
   );
 }
+
 export default Card;

@@ -1,10 +1,29 @@
 import Card from '../../components/card/card';
-import { Film } from '../../types/types';
+import { Films } from '../../types/types';
 import Header from '../../components/header/header';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
-const MOVIES_COUNT = 20;
+function MainScreen({ films }: { films: Films[] }): JSX.Element {
+  const [activeCardId, setActiveCardId] = useState<null | number>(null);
+  const [film] = films;
+  const { name, genre, released } = film;
+  const navigate = useNavigate();
 
-function MainScreen({ film }: { film: Film }): JSX.Element {
+  const FilmList = films.map((filmData) => (
+    <Card
+      key={filmData.id}
+      {...filmData}
+      onMouseEnter={() => {
+        setActiveCardId(filmData.id);
+      }}
+      onMouseLeave={() => {
+        setActiveCardId(null);
+      }}
+    />
+  ));
+
   return (
     <div>
       <section className="film-card">
@@ -15,7 +34,7 @@ function MainScreen({ film }: { film: Film }): JSX.Element {
           />
         </div>
         <h1 className="visually-hidden">WTW</h1>
-        <Header/>
+        <Header />
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
@@ -28,16 +47,17 @@ function MainScreen({ film }: { film: Film }): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{film.name}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{film.genre}</span>
-                <span className="film-card__year">{film.release}</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{released}</span>
               </p>
 
               <div className="film-card__buttons">
                 <button
                   className="btn btn--play film-card__button"
                   type="button"
+                  onClick={() => navigate(AppRoute.Player)}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -47,6 +67,7 @@ function MainScreen({ film }: { film: Film }): JSX.Element {
                 <button
                   className="btn btn--list film-card__button"
                   type="button"
+                  onClick={() => navigate(AppRoute.MyList)}
                 >
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
@@ -116,14 +137,7 @@ function MainScreen({ film }: { film: Film }): JSX.Element {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {[...Array(MOVIES_COUNT)]
-              .fill(null)
-              .map((x, card) => card)
-              .map((card) => (
-                <Card key={card.toString()} />
-              ))}
-          </div>
+          <div className="catalog__films-list">{FilmList}</div>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">
