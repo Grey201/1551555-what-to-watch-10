@@ -1,12 +1,11 @@
 import Card from '../../components/card/card';
 import { Films } from '../../types/types';
 import Header from '../../components/header/header';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
+
 function MainScreen({ films }: { films: Films[] }): JSX.Element {
-  const [activeCardId, setActiveCardId] = useState<null | number>(null);
   const [film] = films;
   const { name, genre, released } = film;
   const navigate = useNavigate();
@@ -15,12 +14,6 @@ function MainScreen({ films }: { films: Films[] }): JSX.Element {
     <Card
       key={filmData.id}
       {...filmData}
-      onMouseEnter={() => {
-        setActiveCardId(filmData.id);
-      }}
-      onMouseLeave={() => {
-        setActiveCardId(null);
-      }}
     />
   ));
 
