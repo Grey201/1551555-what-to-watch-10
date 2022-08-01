@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-
 type VideoPlayerProps = {
   src: string;
   poster: string;
@@ -11,27 +10,33 @@ export default function VideoPlayer({
   poster,
 }: VideoPlayerProps): JSX.Element {
   const [isPlaying, setIsPlaying] = useState(false);
-  let isNeedUpdate = true;
+  let timer: NodeJS.Timeout | undefined = undefined;
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
+
     if (videoRef.current === null) {
       return;
     }
-    if (isPlaying && isNeedUpdate) {
+
+    if (isPlaying) {
       videoRef.current.play();
       return;
     }
     videoRef.current.load();
-    return () => {
-      isNeedUpdate = false;
-    };
   }, [isPlaying]);
 
   return (
     <video
-      onMouseEnter={() => setTimeout(() => setIsPlaying(true), 1000)}
-      onMouseLeave={() => setIsPlaying(false)}
+      onMouseEnter={() => {
+        timer = setTimeout(() => setIsPlaying(!isPlaying), 1000);
+      }}
+      onMouseLeave={() => {
+        if (isPlaying === false) {
+          clearTimeout(timer);
+        }
+        setIsPlaying(false);
+      }}
       src={src}
       ref={videoRef}
       muted
@@ -40,6 +45,7 @@ export default function VideoPlayer({
       poster={poster}
       style={{ objectFit: 'cover' }}
     >
+
     </video>
   );
 }
