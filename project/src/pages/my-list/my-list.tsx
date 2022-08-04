@@ -1,20 +1,13 @@
 import { Films} from '../../types/types';
 import Card from '../../components/card/card';
-import { useState } from 'react';
 
 
 function MyList({ films}: { films: Films[]}): JSX.Element {
-  const [activeCardId, setActiveCardId] = useState<null | number>(null);
+
   const FilmList = films.map((filmData) => (
     <Card
       key={filmData.id}
       {...filmData}
-      onMouseEnter={() => {
-        setActiveCardId(filmData.id);
-      }}
-      onMouseLeave={() => {
-        setActiveCardId(null);
-      }}
     />
   ));
 
