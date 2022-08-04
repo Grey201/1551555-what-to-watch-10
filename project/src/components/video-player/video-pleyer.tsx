@@ -10,31 +10,29 @@ export default function VideoPlayer({
   poster,
 }: VideoPlayerProps): JSX.Element {
   const [isPlaying, setIsPlaying] = useState(false);
-  let timer: NodeJS.Timeout | undefined = undefined;
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-
     if (videoRef.current === null) {
       return;
     }
-
-    if (isPlaying) {
-      videoRef.current.play();
-      return;
+    const timer = setTimeout(() => {
+      if (videoRef.current !== null && isPlaying) {
+        videoRef.current.play();
+      }
+    }, 1000);
+    if (!isPlaying) {
+      videoRef.current.load();
     }
-    videoRef.current.load();
+    return () => clearTimeout(timer);
   }, [isPlaying]);
 
   return (
     <video
       onMouseEnter={() => {
-        timer = setTimeout(() => setIsPlaying(!isPlaying), 1000);
+        setIsPlaying(true);
       }}
       onMouseLeave={() => {
-        if (isPlaying === false) {
-          clearTimeout(timer);
-        }
         setIsPlaying(false);
       }}
       src={src}
@@ -45,7 +43,6 @@ export default function VideoPlayer({
       poster={poster}
       style={{ objectFit: 'cover' }}
     >
-
     </video>
   );
 }
