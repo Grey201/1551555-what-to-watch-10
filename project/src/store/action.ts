@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const activeFilter = createAction('activeFilter', (genre) => ({
+export const activeGenre = createAction('activeGenre', (genre) => ({
   payload: genre,
 }));

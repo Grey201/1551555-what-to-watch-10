@@ -1,8 +1,9 @@
 import Header from '../../components/header/header';
-import { Films } from '../../types/types';
 import { useState } from 'react';
+import { useAppSelector } from '../../store';
 
-function AddReview({ films }: { films: Films[] }): JSX.Element {
+export default function AddReview(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   const [formData, setFormData] = useState('');
   const [film] = films;
   const { name, posterImage, previewImage } = film;
@@ -167,5 +168,3 @@ function AddReview({ films }: { films: Films[] }): JSX.Element {
     </div>
   );
 }
-
-export default AddReview;

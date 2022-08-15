@@ -1,4 +1,3 @@
-import { Films } from '../../types/types';
 import Header from '../../components/header/header';
 import { useNavigate, Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
@@ -6,15 +5,17 @@ import { useAppDispatch } from '../../store';
 import FilmList from '../../components/film-list/film-list';
 import React from 'react';
 import { Fragment } from 'react';
-import { activeFilter } from '../../store/action';
+import { activeGenre } from '../../store/action';
 import SortFilm from '../../components/sort/sort';
+import { useAppSelector } from '../../store';
 
-function MainScreen({ films }: { films: Films[] }): JSX.Element {
+export default function MainScreen(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   const [{ name, genre, released }] = films;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const genres = new Set(films.map((film) => film.genre));
-  const unicGenre = Array.from(genres).map((filmGenre) => (
+  const GenresList = Array.from(genres).map((filmGenre) => (
     <SortFilm key={filmGenre} nameGenre={filmGenre} />
   ));
 
@@ -82,13 +83,13 @@ function MainScreen({ films }: { films: Films[] }): JSX.Element {
             <li
               className="catalog__genres-item catalog__genres-item--active"
               onClick={(evt: React.MouseEvent<HTMLLIElement>) =>
-                dispatch(activeFilter(evt.currentTarget.textContent))}
+                dispatch(activeGenre(evt.currentTarget.textContent))}
             >
               <Link to="#" className="catalog__genres-link">
                 All genres
               </Link>
             </li>
-            {unicGenre}
+            {GenresList}
           </ul>
 
           <div className="catalog__films-list">
@@ -120,4 +121,3 @@ function MainScreen({ films }: { films: Films[] }): JSX.Element {
   );
 }
 
-export default MainScreen;
