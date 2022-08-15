@@ -1,7 +1,6 @@
 import MainScreen from '../../pages/main-screen/main-screen';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { Films } from '../../types/types';
 import MyList from '../../pages/my-list/my-list';
 import Error404 from '../../pages/error-404/error-404';
 import Player from '../../pages/player/player';
@@ -10,25 +9,25 @@ import AddReview from '../../pages/add-review/add-review';
 import SingIn from '../../pages/sign-in/sign-in';
 import PrivateRoute from '../privat-route/privat-route';
 
-function App({ promoFilms }: { promoFilms: Films[] }): JSX.Element {
+function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen films={promoFilms} />}
+          element={<MainScreen/>}
         />
         <Route
           path={AppRoute.MyList}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <MyList films={promoFilms} />
+              <MyList />
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Player} element={<Player films={promoFilms} />} />
+        <Route path={AppRoute.Player} element={<Player />} />
         <Route path={AppRoute.Film} element={<MoviePage />} />
-        <Route path={AppRoute.AddReview} element={<AddReview films={promoFilms}/>} />
+        <Route path={AppRoute.AddReview} element={<AddReview />} />
         <Route path={AppRoute.SignIn} element={<SingIn />} />
         <Route path={AppRoute.Error} element={<Error404 />} />
       </Routes>

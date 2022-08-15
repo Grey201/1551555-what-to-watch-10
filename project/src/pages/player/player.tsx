@@ -1,8 +1,10 @@
-import { Films } from '../../types/types';
+import { useAppSelector } from '../../store';
 
-function Player({ films }: { films: Films[] }): JSX.Element {
+export default function Player(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   const [film] = films;
   const { posterImage, videoLink } = film;
+
   return (
     <div className="player">
       <video src={videoLink} className="player__video" poster={posterImage} />
@@ -40,5 +42,3 @@ function Player({ films }: { films: Films[] }): JSX.Element {
     </div>
   );
 }
-
-export default Player;

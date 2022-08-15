@@ -1,14 +1,10 @@
-import { Films} from '../../types/types';
 import Card from '../../components/card/card';
+import { useAppSelector } from '../../store';
 
-
-function MyList({ films}: { films: Films[]}): JSX.Element {
-
+export default function MyList(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
   const FilmList = films.map((filmData) => (
-    <Card
-      key={filmData.id}
-      {...filmData}
-    />
+    <Card key={filmData.id} {...filmData} />
   ));
 
   return (
@@ -66,5 +62,3 @@ function MyList({ films}: { films: Films[]}): JSX.Element {
     </div>
   );
 }
-
-export default MyList;

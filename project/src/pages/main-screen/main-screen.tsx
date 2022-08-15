@@ -1,24 +1,26 @@
-import Card from '../../components/card/card';
-import { Films } from '../../types/types';
 import Header from '../../components/header/header';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
+import { useAppDispatch } from '../../store';
+import FilmList from '../../components/film-list/film-list';
+import React from 'react';
+import { Fragment } from 'react';
+import { activeGenre } from '../../store/action';
+import SortFilm from '../../components/sort/sort';
+import { useAppSelector } from '../../store';
 
-
-function MainScreen({ films }: { films: Films[] }): JSX.Element {
-  const [film] = films;
-  const { name, genre, released } = film;
+export default function MainScreen(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
+  const [{ name, genre, released }] = films;
   const navigate = useNavigate();
-
-  const FilmList = films.map((filmData) => (
-    <Card
-      key={filmData.id}
-      {...filmData}
-    />
+  const dispatch = useAppDispatch();
+  const genres = new Set(films.map((film) => film.genre));
+  const GenresList = Array.from(genres).map((filmGenre) => (
+    <SortFilm key={filmGenre} nameGenre={filmGenre} />
   ));
 
   return (
-    <div>
+    <Fragment>
       <section className="film-card">
         <div className="film-card__bg">
           <img
@@ -78,59 +80,21 @@ function MainScreen({ films }: { films: Films[] }): JSX.Element {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">
+            <li
+              className="catalog__genres-item catalog__genres-item--active"
+              onClick={(evt: React.MouseEvent<HTMLLIElement>) =>
+                dispatch(activeGenre(evt.currentTarget.textContent))}
+            >
+              <Link to="#" className="catalog__genres-link">
                 All genres
-              </a>
+              </Link>
             </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Comedies
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Crime
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Documentary
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Dramas
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Horror
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Kids & Family
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Romance
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Sci-Fi
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">
-                Thrillers
-              </a>
-            </li>
+            {GenresList}
           </ul>
 
-          <div className="catalog__films-list">{FilmList}</div>
+          <div className="catalog__films-list">
+            <FilmList />
+          </div>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">
@@ -153,8 +117,7 @@ function MainScreen({ films }: { films: Films[] }): JSX.Element {
           </div>
         </footer>
       </div>
-    </div>
+    </Fragment>
   );
 }
 
-export default MainScreen;
