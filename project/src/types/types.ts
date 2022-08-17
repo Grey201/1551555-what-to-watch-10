@@ -17,8 +17,3 @@ genre: string;
 released: number;
 isFavorite: boolean;
 };
-
-// export type FilmList={
-// films:Films,
-// genre: string,
-// }

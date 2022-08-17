@@ -11,7 +11,7 @@ export const setError = createAction('setError', (error) => ({
 }));
 export const setDataLoadedStatus = createAction(
   'setDataLoadedStatus',
-  (isDataLoaded) => ({
-    payload: isDataLoaded,
+  (isDataLoading) => ({
+    payload: isDataLoading,
   })
 );

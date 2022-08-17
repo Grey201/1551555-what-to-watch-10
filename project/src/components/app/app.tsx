@@ -11,9 +11,9 @@ import PrivateRoute from '../privat-route/privat-route';
 import { useAppSelector } from '../../store';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
-function App(): JSX.Element {
-  const { isDataLoaded } = useAppSelector((state) => state);
-  if (!isDataLoaded) {
+export default function App(): JSX.Element {
+  const { isDataLoading } = useAppSelector((state) => state);
+  if (isDataLoading) {
     return <LoadingScreen />;
   }
   return (
@@ -37,5 +37,3 @@ function App(): JSX.Element {
     </BrowserRouter>
   );
 }
-
-export default App;

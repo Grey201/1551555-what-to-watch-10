@@ -1,23 +1,20 @@
 import { activeGenre, loadFilms, setError, setDataLoadedStatus } from './action';
 import { createReducer } from '@reduxjs/toolkit';
-// import { films } from '../mocks/films';
 import { Film } from '../types/types';
 
 
 type InitialState = {
-  // films:Films,
   films: Film [];
   genre: string;
   error: string | null;
-  isDataLoaded: boolean;
+  isDataLoading: boolean;
 };
 
 const initialState: InitialState = {
-  // films: films,
   films: [],
   genre: 'All genres',
   error: null,
-  isDataLoaded: true,
+  isDataLoading: false,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -32,6 +29,6 @@ export const reducer = createReducer(initialState, (builder) => {
       state.error = action.payload;
     })
     .addCase(setDataLoadedStatus, (state, action) => {
-      state.isDataLoaded = action.payload;
+      state.isDataLoading = action.payload;
     });
 });

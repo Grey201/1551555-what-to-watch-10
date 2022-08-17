@@ -4,7 +4,6 @@ import { reducer } from './reducer';
 import { Store, AppDispatch } from '../types/state';
 import { createAPI } from '../services/api';
 
-// export const store = configureStore({ reducer });
 export const useAppSelector: TypedUseSelectorHook<Store> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const api = createAPI();
