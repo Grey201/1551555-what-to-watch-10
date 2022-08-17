@@ -8,15 +8,18 @@ import MoviePage from '../../pages/movie-page/movie-page';
 import AddReview from '../../pages/add-review/add-review';
 import SingIn from '../../pages/sign-in/sign-in';
 import PrivateRoute from '../privat-route/privat-route';
+import { useAppSelector } from '../../store';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 function App(): JSX.Element {
+  const { isDataLoaded } = useAppSelector((state) => state);
+  if (!isDataLoaded) {
+    return <LoadingScreen />;
+  }
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<MainScreen/>}
-        />
+        <Route path={AppRoute.Main} element={<MainScreen />} />
         <Route
           path={AppRoute.MyList}
           element={

@@ -1,4 +1,4 @@
-import Card from '../../components/card/card';
+import { Card } from '../../components/card/card';
 import { useAppSelector } from '../../store';
 
 export default function MyList(): JSX.Element {

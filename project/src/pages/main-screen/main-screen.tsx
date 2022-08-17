@@ -11,6 +11,7 @@ import { useAppSelector } from '../../store';
 
 export default function MainScreen(): JSX.Element {
   const films = useAppSelector((state) => state.films);
+  console.log(films);
   const [{ name, genre, released }] = films;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
