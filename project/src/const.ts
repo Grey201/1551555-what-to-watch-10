@@ -17,3 +17,5 @@ export enum AuthorizationStatus {
 export enum APIRoute {
   Films = '/films',
 }
+
+export const DEFAULT_GENRE = 'All genres';

@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AppDispatch, Store} from '../types/state';
+import { AppDispatch, Store } from '../types/state';
 import { AxiosInstance } from 'axios';
-import { loadFilms,setDataLoadedStatus } from './action';
+import { loadFilms, setDataLoadedStatus,} from './action';
 import { Film } from '../types/types';
-import { APIRoute } from '../const';
+import { APIRoute} from '../const';
 
-export const fetshFilmsAction = createAsyncThunk<
+export const fetchFilmsAction = createAsyncThunk<
   void,
   undefined,
   {
@@ -15,7 +15,7 @@ export const fetshFilmsAction = createAsyncThunk<
   }
 >('data/fetchFilms', async (_arg, { dispatch, extra: api }) => {
   dispatch(setDataLoadedStatus(true));
-  const {data} = await api.get<Film>(APIRoute.Films);
+  const { data } = await api.get<Film>(APIRoute.Films);
   dispatch(loadFilms(data));
   dispatch(setDataLoadedStatus(false));
 });

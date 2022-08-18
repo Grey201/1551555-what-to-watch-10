@@ -13,13 +13,14 @@ import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 export default function App(): JSX.Element {
   const { isDataLoading } = useAppSelector((state) => state);
-  if (isDataLoading) {
-    return <LoadingScreen />;
-  }
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainScreen />} />
+        <Route
+          path={AppRoute.Main}
+          element={isDataLoading ? <LoadingScreen /> : <MainScreen />}
+        />
         <Route
           path={AppRoute.MyList}
           element={
