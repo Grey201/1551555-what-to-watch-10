@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Films } from '../../types/types';
+import { Film } from '../../types/types';
 import VideoPlayer from '../video-player/video-pleyer';
 
-export type CardProps = Films & {
+export type CardProps = Film & {
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 };
 
-function Card(props: Films) {
+export function Card(props: Film) {
   const { id, posterImage, name, previewVideoLink } = props;
 
   return (
@@ -19,5 +19,3 @@ function Card(props: Films) {
     </article>
   );
 }
-
-export default Card;

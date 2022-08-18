@@ -8,14 +8,18 @@ import MoviePage from '../../pages/movie-page/movie-page';
 import AddReview from '../../pages/add-review/add-review';
 import SingIn from '../../pages/sign-in/sign-in';
 import PrivateRoute from '../privat-route/privat-route';
+import { useAppSelector } from '../../store';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
+  const { isDataLoading } = useAppSelector((state) => state);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen/>}
+          element={isDataLoading ? <LoadingScreen /> : <MainScreen />}
         />
         <Route
           path={AppRoute.MyList}
@@ -34,5 +38,3 @@ function App(): JSX.Element {
     </BrowserRouter>
   );
 }
-
-export default App;

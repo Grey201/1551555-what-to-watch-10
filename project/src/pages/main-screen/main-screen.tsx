@@ -120,4 +120,3 @@ export default function MainScreen(): JSX.Element {
     </Fragment>
   );
 }
-
