@@ -15,3 +15,9 @@ export const setDataLoadedStatus = createAction(
     payload: isDataLoading,
   })
 );
+export const requireAuthorization = createAction(
+  'requireAuthorization',
+  (authorizationStatus) => ({
+    payload: authorizationStatus,
+  })
+);
