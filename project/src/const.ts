@@ -21,4 +21,3 @@ export enum APIRoute {
 }
 
 export const DEFAULT_GENRE = 'All genres';
-export const TIMEOUT_SHOW_ERROR = 5000;
