@@ -3,7 +3,7 @@ import { AppDispatch, Store } from '../types/state';
 import { AxiosInstance } from 'axios';
 import { loadFilms, setDataLoadedStatus, requireAuthorization } from './action';
 import { Film } from '../types/types';
-import { APIRoute, AuthorizationStatus} from '../const';
+import { APIRoute, AuthorizationStatus } from '../const';
 import { saveToken, dropToken } from '../services/token';
 import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';

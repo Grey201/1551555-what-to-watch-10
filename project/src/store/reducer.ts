@@ -1,14 +1,19 @@
-import { activeGenre, loadFilms, requireAuthorization, setDataLoadedStatus} from './action';
+import {
+  activeGenre,
+  loadFilms,
+  requireAuthorization,
+  setDataLoadedStatus,
+} from './action';
 import { createReducer } from '@reduxjs/toolkit';
 import { Film } from '../types/types';
-import {AuthorizationStatus } from '../const';
-import {DEFAULT_GENRE} from '../const';
+import { AuthorizationStatus } from '../const';
+import { DEFAULT_GENRE } from '../const';
 
 type InitialState = {
-  films: Film [];
+  films: Film[];
   genre: string;
   isDataLoading: boolean;
-  authorizationStatus: AuthorizationStatus,
+  authorizationStatus: AuthorizationStatus;
 };
 
 const initialState: InitialState = {
