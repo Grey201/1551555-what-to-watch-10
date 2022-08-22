@@ -21,3 +21,9 @@ export enum APIRoute {
 }
 
 export const DEFAULT_GENRE = 'All genres';
+
+export enum NameSpace {
+  Data = 'DATA',
+  Game = 'GAME',
+  User = 'USER',
+}
