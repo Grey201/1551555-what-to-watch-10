@@ -8,6 +8,7 @@ export enum AppRoute {
   Error = '*',
 }
 
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -16,6 +17,8 @@ export enum AuthorizationStatus {
 
 export enum APIRoute {
   Films = '/films',
+  Login = '/login',
+  Logout = '/logout',
 }
 
 export const DEFAULT_GENRE = 'All genres';

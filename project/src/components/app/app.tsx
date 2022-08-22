@@ -1,6 +1,6 @@
 import MainScreen from '../../pages/main-screen/main-screen';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import MyList from '../../pages/my-list/my-list';
 import Error404 from '../../pages/error-404/error-404';
 import Player from '../../pages/player/player';
@@ -13,6 +13,7 @@ import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 export default function App(): JSX.Element {
   const { isDataLoading } = useAppSelector((state) => state);
+  const { authorizationStatus } = useAppSelector((state) => state);
 
   return (
     <BrowserRouter>
@@ -24,7 +25,7 @@ export default function App(): JSX.Element {
         <Route
           path={AppRoute.MyList}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <MyList />
             </PrivateRoute>
           }
