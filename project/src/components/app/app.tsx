@@ -11,9 +11,9 @@ import PrivateRoute from '../privat-route/privat-route';
 import { useAppSelector } from '../../store';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
-
 export default function App(): JSX.Element {
-  const {authorizationStatus, isDataLoading } = useAppSelector((state) => state);
+  const { isDataLoading } = useAppSelector((state) => state);
+  const { authorizationStatus } = useAppSelector((state) => state);
 
   return (
     <BrowserRouter>
