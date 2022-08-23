@@ -9,7 +9,7 @@ import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';
 
 export const fetchFilmsAction = createAsyncThunk<
-  void,
+  Film,
   undefined,
   {
     dispatsh: AppDispatch;
@@ -19,8 +19,7 @@ export const fetchFilmsAction = createAsyncThunk<
 >('data/fetchFilms', async (_arg, { dispatch, extra: api }) => {
   dispatch(setDataLoadedStatus(true));
   const { data } = await api.get<Film>(APIRoute.Films);
-  dispatch(loadFilms(data));
-  dispatch(setDataLoadedStatus(false));
+  return data;
 });
 
 export const checkAuthAction = createAsyncThunk<

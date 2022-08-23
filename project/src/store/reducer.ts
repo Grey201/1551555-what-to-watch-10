@@ -21,9 +21,9 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(activeGenre, (state, action) => {
       state.genre = action.payload;
     })
-    .addCase(loadFilms, (state, action) => {
-      state.films = action.payload;
-    })
+    // .addCase(loadFilms, (state, action) => {
+    //   state.films = action.payload;
+    // })
     .addCase(setDataLoadedStatus, (state, action) => {
       state.isDataLoading = action.payload;
     });
