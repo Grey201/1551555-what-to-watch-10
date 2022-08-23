@@ -1,4 +1,4 @@
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../store';
 import { logoutAction } from '../../store/api-actions';
@@ -17,7 +17,7 @@ export default function Header() {
       </div>
 
       <ul className="user-block">
-        {authorizationStatus === 'AUTH' ? (
+        {authorizationStatus === AuthorizationStatus.Auth ? (
           <li className="user-block__item">
             <div className="user-block__avatar">
               <img
@@ -30,7 +30,7 @@ export default function Header() {
           </li>
         ) : null}
         <li className="user-block__item">
-          {authorizationStatus === 'NO_AUTH' ? (
+          {authorizationStatus === AuthorizationStatus.NoAuth ? (
             <Link className="user-block__link" to={AppRoute.SignIn}>
               Sign in
             </Link>
