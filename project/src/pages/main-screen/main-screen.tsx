@@ -5,12 +5,13 @@ import { useAppDispatch } from '../../store';
 import FilmList from '../../components/film-list/film-list';
 import React from 'react';
 import { Fragment } from 'react';
-import { activeGenre } from '../../store/action';
+import { activeGenre } from '../../store/film-process/film-process';
 import SortFilm from '../../components/sort/sort';
 import { useAppSelector } from '../../store';
+import { getFilms } from '../../store/film-data/selectors';
 
 export default function MainScreen(): JSX.Element {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(getFilms);
   const [{ name, genre, released }] = films;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

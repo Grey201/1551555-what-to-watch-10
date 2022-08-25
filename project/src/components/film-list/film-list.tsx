@@ -1,15 +1,10 @@
 import { useAppSelector } from '../../store';
 import { Card } from '../card/card';
 import { Fragment } from 'react';
-import { DEFAULT_GENRE } from '../../const';
+import { selectorFilms } from '../../store/film-data/selectors';
 
 export default function FilmList(): JSX.Element {
-  const selectedGenre = useAppSelector((state) => state.genre);
-  const filterFilms = useAppSelector((state) =>
-    selectedGenre === DEFAULT_GENRE
-      ? state.films
-      : state.films.filter((film) => film.genre === selectedGenre)
-  );
+  const filterFilms = useAppSelector(selectorFilms);
   const filmList = filterFilms.map((filmData) => (
     <Card key={filmData.id} {...filmData} />
   ));

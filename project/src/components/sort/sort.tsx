@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../store';
-import { activeGenre } from '../../store/action';
+import { activeGenre } from '../../store/film-process/film-process';
 import { Link } from 'react-router-dom';
 
 export default function SortFilm({

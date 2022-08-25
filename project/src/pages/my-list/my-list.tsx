@@ -1,8 +1,9 @@
 import { Card } from '../../components/card/card';
 import { useAppSelector } from '../../store';
+import { getFilms } from '../../store/film-data/selectors';
 
 export default function MyList(): JSX.Element {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(getFilms);
   const FilmList = films.map((filmData) => (
     <Card key={filmData.id} {...filmData} />
   ));

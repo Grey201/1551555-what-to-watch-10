@@ -13,5 +13,5 @@ export type FilmData = {
 };
 
 export type FilmProcess = {
-  genre: string;
+  genre: string | null;
 };

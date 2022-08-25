@@ -10,10 +10,12 @@ import SingIn from '../../pages/sign-in/sign-in';
 import PrivateRoute from '../privat-route/privat-route';
 import { useAppSelector } from '../../store';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import { getLoadedDataStatus } from '../../store/film-data/selectors';
 
 export default function App(): JSX.Element {
-  const { isDataLoading } = useAppSelector((state) => state);
-  const { authorizationStatus } = useAppSelector((state) => state);
+  const isDataLoading = useAppSelector(getLoadedDataStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   return (
     <BrowserRouter>

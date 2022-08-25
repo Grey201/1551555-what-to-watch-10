@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { NameSpace } from '../../const';
 import { FilmData } from '../../types/state';
 import { fetchFilmsAction } from '../api-actions';
+import { NameSpace } from '../../const';
 
 const initialState: FilmData = {
   films: [],
   isDataLoading: false,
 };
 
-export const gameData = createSlice({
+export const filmData = createSlice({
   name: NameSpace.Data,
   initialState,
   reducers: {},
