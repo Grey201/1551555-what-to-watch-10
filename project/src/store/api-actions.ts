@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, Store } from '../types/state';
 import { AxiosInstance } from 'axios';
-import { Film } from '../types/types';
+import { Film, Comment } from '../types/types';
 import { APIRoute } from '../const';
 import { saveToken, dropToken } from '../services/token';
 import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';
+import { Id } from 'react-toastify';
 
 export const fetchFilmsAction = createAsyncThunk<
   Film[],
@@ -17,6 +18,20 @@ export const fetchFilmsAction = createAsyncThunk<
   }
 >('data/fetchFilms', async (_arg, { dispatch, extra: api }) => {
   const { data } = await api.get<Film[]>(APIRoute.Films);
+  return data;
+});
+
+export const fetchCommentsAction = createAsyncThunk<
+  Comment[],
+  number,
+  {
+    dispatsh: AppDispatch;
+    state: Store;
+    extra: AxiosInstance;
+  }
+>('data/fetchComments', async (id, { dispatch, extra: api }) => {
+  const { data } = await api.get<Comment[]>(`${APIRoute.Comments}/${id}`);
+  console.log(data);
   return data;
 });
 

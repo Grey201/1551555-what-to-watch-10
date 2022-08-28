@@ -18,6 +18,7 @@ export enum APIRoute {
   Films = '/films',
   Login = '/login',
   Logout = '/logout',
+  Comments='/comments',
 }
 
 export const DEFAULT_GENRE = 'All genres';
@@ -26,4 +27,10 @@ export enum NameSpace {
   Data = 'DATA',
   Genre = 'GENRE',
   User = 'USER',
+}
+
+export enum Tab {
+  Overview = 'Overview',
+  Details = 'Details',
+  Reviews = 'Reviews',
 }
