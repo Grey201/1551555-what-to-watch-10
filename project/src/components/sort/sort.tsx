@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../store';
-import { activeGenre } from '../../store/action';
+import { activeGenre } from '../../store/film-process/film-process';
 import { Link } from 'react-router-dom';
 
 export default function SortFilm({
@@ -13,7 +13,7 @@ export default function SortFilm({
     <li
       className="catalog__genres-item"
       onClick={(evt: React.MouseEvent<HTMLLIElement>) =>
-        dispatch(activeGenre(evt.currentTarget.textContent))}
+        dispatch(activeGenre(evt.currentTarget.innerText))}
     >
       <Link to="#" className="catalog__genres-link">
         {nameGenre}

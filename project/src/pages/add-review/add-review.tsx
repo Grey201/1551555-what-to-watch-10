@@ -1,9 +1,10 @@
 import Header from '../../components/header/header';
 import { useState } from 'react';
 import { useAppSelector } from '../../store';
+import { getFilms } from '../../store/film-data/selectors';
 
 export default function AddReview(): JSX.Element {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(getFilms);
   const [formData, setFormData] = useState('');
   const [film] = films;
   const { name, posterImage, previewImage } = film;

@@ -1,7 +1,8 @@
 import { useAppSelector } from '../../store';
+import { getFilms } from '../../store/film-data/selectors';
 
 export default function Player(): JSX.Element {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(getFilms);
   const [film] = films;
   const { posterImage, videoLink } = film;
 

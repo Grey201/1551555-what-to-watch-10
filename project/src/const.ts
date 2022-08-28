@@ -8,7 +8,6 @@ export enum AppRoute {
   Error = '*',
 }
 
-
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -22,3 +21,9 @@ export enum APIRoute {
 }
 
 export const DEFAULT_GENRE = 'All genres';
+
+export enum NameSpace {
+  Data = 'DATA',
+  Genre = 'GENRE',
+  User = 'USER',
+}
