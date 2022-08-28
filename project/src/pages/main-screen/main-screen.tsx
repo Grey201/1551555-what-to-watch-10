@@ -84,7 +84,7 @@ export default function MainScreen(): JSX.Element {
             <li
               className="catalog__genres-item catalog__genres-item--active"
               onClick={(evt: React.MouseEvent<HTMLLIElement>) =>
-                dispatch(activeGenre(evt.currentTarget.textContent))}
+                dispatch(activeGenre(evt.currentTarget.innerText))}
             >
               <Link to="#" className="catalog__genres-link">
                 All genres
