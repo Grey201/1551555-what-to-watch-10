@@ -7,13 +7,14 @@ export type AppDispatch = typeof store.dispatch;
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
 };
+
 export type FilmData = {
   films: Film[];
   isDataLoading: boolean;
   comments: Comment[];
-  similarFilms:Film[];
+  similarFilms: Film[];
 };
 
 export type FilmProcess = {
-  genre: string ;
+  genre: string;
 };

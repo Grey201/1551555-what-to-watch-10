@@ -75,11 +75,10 @@ export default function Tabs({ tab }: { tab: string }): JSX.Element {
   }
 
   if (tab === Tab.Reviews) {
-    const [{ genre, runTime, released, director, starring }] = films;
     return (
       <div className="film-card__reviews film-card__row">
         <div className="film-card__reviews-col">
-         <Review/>
+          <Review />
         </div>
       </div>
     );

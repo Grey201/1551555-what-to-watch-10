@@ -30,7 +30,6 @@ export const fetchCommentsAction = createAsyncThunk<
   }
 >('data/fetchComments', async (id, { dispatch, extra: api }) => {
   const { data } = await api.get<Comment[]>(`${APIRoute.Comments}/${id}`);
-  console.log(data);
   return data;
 });
 
@@ -44,7 +43,6 @@ export const fetchSimilarFilms = createAsyncThunk<
   }
 >('data/fetchSimilarFilms', async (id, { dispatch, extra: api }) => {
   const { data } = await api.get<Film[]>(`${APIRoute.Films}/${id}/similar`);
-  console.log(data);
   return data;
 });
 
