@@ -11,7 +11,6 @@ export const filmProcess = createSlice({
   initialState,
   reducers: {
     activeGenre: (state, action: PayloadAction<string>) => {
-      // activeGenre: (state, action: PayloadAction<string | null>) => {
       state.genre = action.payload;
     },
   },

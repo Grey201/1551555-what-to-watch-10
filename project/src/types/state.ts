@@ -11,6 +11,7 @@ export type FilmData = {
   films: Film[];
   isDataLoading: boolean;
   comments: Comment[];
+  similarFilms:Film[];
 };
 
 export type FilmProcess = {

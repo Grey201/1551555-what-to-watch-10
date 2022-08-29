@@ -6,6 +6,7 @@ import React from 'react';
 import { useAppSelector } from '../../store';
 import { getFilms } from '../../store/film-data/selectors';
 import LoadingScreen from '../loading-screen/loading-screen';
+import SimilarFilmList from '../../components/similar-film-list/similar-film-list';
 
 function MoviePage(): JSX.Element {
   const navigate = useNavigate();
@@ -86,10 +87,8 @@ function MoviePage(): JSX.Element {
                     </li>
                     <li
                       className="film-nav__item"
-                      onClick={
-                        (evt: React.MouseEvent<HTMLLIElement>) =>
-                          setTab(evt.currentTarget.textContent as string)
-                        // console.log(evt.currentTarget.textContent);
+                      onClick={(evt: React.MouseEvent<HTMLLIElement>) =>
+                        setTab(evt.currentTarget.textContent as string)
                       }
                     >
                       <span className="film-nav__link">Details</span>
@@ -115,7 +114,8 @@ function MoviePage(): JSX.Element {
             <h2 className="catalog__title">More like this</h2>
 
             <div className="catalog__films-list">
-              <article className="small-film-card catalog__films-card">
+              <SimilarFilmList/>
+              {/* <article className="small-film-card catalog__films-card">
                 <div className="small-film-card__image">
                   <img
                     src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
@@ -177,7 +177,7 @@ function MoviePage(): JSX.Element {
                     Aviator
                   </a>
                 </h3>
-              </article>
+              </article> */}
             </div>
           </section>
 
