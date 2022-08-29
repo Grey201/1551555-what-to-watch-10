@@ -76,24 +76,21 @@ export default function MoviePage(): JSX.Element {
                     <li
                       className="film-nav__item film-nav__item--active"
                       onClick={(evt: React.MouseEvent<HTMLLIElement>) =>
-                        setTab(evt.currentTarget.textContent as string)
-                      }
+                        setTab(evt.currentTarget.textContent as string)}
                     >
                       <span className="film-nav__link">Overview</span>
                     </li>
                     <li
                       className="film-nav__item"
                       onClick={(evt: React.MouseEvent<HTMLLIElement>) =>
-                        setTab(evt.currentTarget.textContent as string)
-                      }
+                        setTab(evt.currentTarget.textContent as string)}
                     >
                       <span className="film-nav__link">Details</span>
                     </li>
                     <li
                       className="film-nav__item"
                       onClick={(evt: React.MouseEvent<HTMLLIElement>) =>
-                        setTab(evt.currentTarget.textContent as string)
-                      }
+                        setTab(evt.currentTarget.textContent as string)}
                     >
                       <span className="film-nav__link">Reviews</span>
                     </li>

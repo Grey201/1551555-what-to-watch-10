@@ -49,7 +49,7 @@ export default function Tabs({ tab }: { tab: string }): JSX.Element {
             <strong className="film-card__details-name">Starring</strong>
             <span className="film-card__details-value">
               {starring.map((star, index) => (
-                <Fragment key={index}>
+                <Fragment key={star}>
                   <span>{star}, </span> <br />
                 </Fragment>
               ))}

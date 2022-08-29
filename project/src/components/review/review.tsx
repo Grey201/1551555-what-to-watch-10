@@ -4,8 +4,8 @@ import { getComments } from '../../store/film-data/selectors';
 
 export default function Review(): JSX.Element {
   const comments = useAppSelector(getComments);
-  const commentList = comments.map((comment, index) => (
-    <div className="review" key={index}>
+  const commentList = comments.map((comment) => (
+    <div className="review" key={comment}>
       <blockquote className="review__quote">
         <p className="review__text">{comment.comment}</p>
         <footer className="review__details">
